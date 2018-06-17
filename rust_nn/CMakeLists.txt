@@ -4,7 +4,6 @@ project(rust_nn)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(rust_nn
-        src/neural_net/layer.rs
         src/neural_net/mod.rs
         src/lib.rs
         src/main.rs
