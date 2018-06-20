@@ -11,7 +11,6 @@ add_executable(rust_nn
         src/neural_net/layer/math.rs
         src/neural_net/layer/mod.rs
         src/neural_net/mod.rs
-        src/lib.rs
         src/main.rs
         Cargo.lock
         Cargo.toml

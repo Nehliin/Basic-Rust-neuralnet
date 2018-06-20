@@ -85,42 +85,6 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/CMakeLists.txt">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/Cargo.lock">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/Cargo.toml">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/cmake-build-debug/CMakeCache.txt">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/cmake-build-debug/Makefile">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/cmake-build-debug/cmake_install.cmake">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/cmake-build-debug/rust_nn.cbp">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/src/lib.rs">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/src/main.rs">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/src/neural_net/layer/math.rs">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/src/neural_net/layer/mod.rs">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/src/neural_net/mod.rs">
-			<Option target="rust_nn"/>
-		</Unit>
-		<Unit filename="/home/oskar/Desktop/Rust/rust_nn/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -3,7 +3,13 @@ use std;
 use neural_net::math::rand::distributions::{Normal, Distribution};
 
 #[derive(Debug)]
-pub struct Matrix(pub Vec<Vec<f32>>);
+pub struct Matrix(Vec<Vec<f32>>);
+
+impl Matrix {
+    pub fn getColumns(&self) -> &Vec<Vec<f32>> {
+        return &self.0;
+    }
+}
 
 pub fn normally_distributed() -> f32{
     let normal_distribution = Normal::new(0.0, 1.0);
@@ -24,13 +30,13 @@ pub fn sigmoid(x : f32) -> f32{
 }
 
 pub fn matrix_multiply(matrix: &Matrix, vec: &Vec<f32>) -> Result<Vec<f32>, &'static str> {
-    if matrix.0.len() != vec.len() { //row
+    if matrix.getColumns().len() != vec.len() { //row
         return Err("Missmatch of row lenght and vec to be multiplied")
     } else {
-        let mut result = Vec::with_capacity(matrix.0.len());
+        let mut result = Vec::with_capacity(matrix.getColumns().len());
         let mut index:usize = 0;
         let mut calc:f32 = 0.0;
-        for i in &matrix.0 {
+        for i in matrix.getColumns() {
             for matrixValue in i {
                 calc += matrixValue*vec[index];
                 index += 1;
@@ -72,10 +78,10 @@ mod tests {
     #[test]
     fn matrix_generation() {
         let matrix = generate_matrix(&2,&3);
-        assert_eq!(2, matrix.0.len());
+        assert_eq!(2, matrix.getColumns().len());
 
         let mut prev_col =  vec![2.0;3]; // can never be greater than 1
-        for col in &matrix.0 {
+        for col in matrix.getColumns() {
             assert_eq!(3, col.len());
             assert_ne!(prev_col, *col); // check that columns are unique
             let mut prev = 2.0 as f32; // a value that can never be taken
