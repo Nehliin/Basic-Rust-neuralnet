@@ -12,12 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b728945-e75c-4f0e-9d09-b32cc33372e9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/rust_nn.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/rust_nn.cbp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.31457564">
+    <splitter split-orientation="horizontal" split-proportion="0.48800737">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="Cargo.toml" pinned="false" current-in-tab="false">
@@ -52,13 +47,8 @@
           <file leaf-file-name="math.rs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="296">
-                  <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
-                  <folding>
-                    <element signature="e#208#209#0" expanded="true" />
-                    <element signature="e#231#232#0" expanded="true" />
-                    <element signature="e#1371#2988#0" />
-                  </folding>
+                <state relative-caret-position="360">
+                  <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -79,11 +69,8 @@
           <file leaf-file-name="mod.rs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#1628#2722#0" />
-                  </folding>
+                <state relative-caret-position="300">
+                  <caret line="50" column="75" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
                 </state>
               </provider>
             </entry>
@@ -209,17 +196,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.Test neural_net::tests">
+  <component name="RunManager" selected="Cargo Command.Test neural_net::tests::propagate_forward">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all" />
     <configuration name="rust_nn" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="rust_nn" TARGET_NAME="rust_nn" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="rust_nn" RUN_TARGET_NAME="rust_nn" />
-    <configuration name="Test lib::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="channel" value="DEFAULT" />
-      <option name="command" value="test --package rust_nn --lib tests" />
-      <option name="nocapture" value="true" />
-      <option name="backtrace" value="SHORT" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-    </configuration>
     <configuration name="Test math::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package rust_nn --bin rust_nn neural_net::math::tests" />
@@ -228,9 +207,9 @@
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
     </configuration>
-    <configuration name="Test neural_net::math::tests::matrix_generation" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+    <configuration name="Test neural_net::math::tests::matrix_multiplication" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
-      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::math::tests::matrix_generation -- --exact" />
+      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::math::tests::matrix_multiplication -- --exact" />
       <option name="nocapture" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -252,6 +231,14 @@
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
     </configuration>
+    <configuration name="Test neural_net::tests::propagate_forward" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::tests::propagate_forward -- --exact" />
+      <option name="nocapture" value="true" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+    </configuration>
     <configuration name="Tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package rust_nn" />
@@ -264,19 +251,19 @@
       <item itemvalue="Cargo Command.Tests" />
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.rust_nn" />
-      <item itemvalue="Cargo Command.Test lib::tests" />
       <item itemvalue="Cargo Command.Test math::tests" />
       <item itemvalue="Cargo Command.Test neural_net::tests" />
       <item itemvalue="Cargo Command.Test neural_net::tests::nn_new" />
-      <item itemvalue="Cargo Command.Test neural_net::math::tests::matrix_generation" />
+      <item itemvalue="Cargo Command.Test neural_net::math::tests::matrix_multiplication" />
+      <item itemvalue="Cargo Command.Test neural_net::tests::propagate_forward" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo Command.Test neural_net::tests::propagate_forward" />
         <item itemvalue="Cargo Command.Test neural_net::tests" />
+        <item itemvalue="Cargo Command.Test neural_net::math::tests::matrix_multiplication" />
         <item itemvalue="Cargo Command.Test math::tests" />
         <item itemvalue="Cargo Command.Test neural_net::tests::nn_new" />
-        <item itemvalue="Cargo Command.Test neural_net::math::tests::matrix_generation" />
-        <item itemvalue="Cargo Command.Test lib::tests" />
       </list>
     </recent_temporary>
   </component>
@@ -298,25 +285,25 @@
       <workItem from="1529263904291" duration="645000" />
       <workItem from="1529342232743" duration="6705000" />
       <workItem from="1529432357773" duration="5561000" />
-      <workItem from="1529515178844" duration="3098000" />
+      <workItem from="1529515178844" duration="3232000" />
+      <workItem from="1529603055978" duration="5311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32657000" />
+    <option name="totallyTimeSpent" value="38102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="2493" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13036503" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13036503" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Cargo" order="3" />
       <window_info anchor="bottom" id="CMake" order="7" sideWeight="0.49939832" weight="0.3481255" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5006017" side_tool="true" weight="0.348659" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.328877" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49979943" visible="true" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49979943" visible="true" weight="0.4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -327,6 +314,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.328877" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +325,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="16" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -566,23 +554,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
-          <folding>
-            <element signature="e#208#209#0" expanded="true" />
-            <element signature="e#231#232#0" expanded="true" />
-            <element signature="e#1371#2988#0" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding>
-            <element signature="e#1628#2722#0" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="50" column="75" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
         </state>
       </provider>
     </entry>

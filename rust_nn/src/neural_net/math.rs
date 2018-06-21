@@ -3,10 +3,10 @@ use std;
 use neural_net::math::rand::distributions::{Normal, Distribution};
 
 #[derive(Debug)]
-pub struct Matrix(Vec<Vec<f32>>);
+pub struct Matrix(pub Vec<Vec<f32>>);
 
 impl Matrix {
-    pub fn getColumns(&self) -> &Vec<Vec<f32>> {
+    pub fn getRows(&self) -> &Vec<Vec<f32>> {
         return &self.0;
     }
 }
@@ -29,22 +29,19 @@ pub fn sigmoid(x : f32) -> f32{
     return 1.0/(1.0 + std::f32::consts::E.powf(-x));
 }
 
-pub fn matrix_multiply(matrix: &Matrix, vec: &Vec<f32>) -> Result<Vec<f32>, &'static str> {
-    if matrix.getColumns().len() != vec.len() { //row
+pub fn matrix_multiply<'a>(matrix: &Matrix, vec: &Vec<f32>) -> Result<Vec<f32>, &'a str> {
+    if matrix.getRows()[0].len() != vec.len() {
         return Err("Missmatch of row lenght and vec to be multiplied")
     } else {
-        let mut result = Vec::with_capacity(matrix.getColumns().len());
-        let mut index:usize = 0;
-        let mut calc:f32 = 0.0;
-        for i in matrix.getColumns() {
-            for matrixValue in i {
-                calc += matrixValue*vec[index];
-                index += 1;
+        let mut result = vec![0.0;matrix.getRows().len()];//Vec::with_capacity(matrix.getColumns().len());
+        let mut index = 0;
+        for row in matrix.getRows() {
+            for (m, v) in row.iter().zip(vec) {
+                result[index] += *m * *v;
             }
-            result.push(calc);
-            index = 0;
-            calc = 0.0;
+            index += 1;
         }
+
         return Ok(result);
     }
 }
@@ -78,10 +75,10 @@ mod tests {
     #[test]
     fn matrix_generation() {
         let matrix = generate_matrix(&2,&3);
-        assert_eq!(2, matrix.getColumns().len());
+        assert_eq!(2, matrix.getRows().len());
 
         let mut prev_col =  vec![2.0;3]; // can never be greater than 1
-        for col in matrix.getColumns() {
+        for col in matrix.getRows() {
             assert_eq!(3, col.len());
             assert_ne!(prev_col, *col); // check that columns are unique
             let mut prev = 2.0 as f32; // a value that can never be taken
