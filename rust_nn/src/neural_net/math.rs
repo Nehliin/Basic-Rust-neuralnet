@@ -34,12 +34,10 @@ pub fn matrix_multiply<'a>(matrix: &Matrix, vec: &Vec<f32>) -> Result<Vec<f32>, 
         return Err("Missmatch of row lenght and vec to be multiplied")
     } else {
         let mut result = vec![0.0;matrix.getRows().len()];//Vec::with_capacity(matrix.getColumns().len());
-        let mut index = 0;
-        for row in matrix.getRows() {
+        for (index,row) in matrix.getRows().iter().enumerate() {
             for (m, v) in row.iter().zip(vec) {
                 result[index] += *m * *v;
             }
-            index += 1;
         }
 
         return Ok(result);

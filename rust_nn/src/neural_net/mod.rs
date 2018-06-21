@@ -48,10 +48,10 @@ impl NeuralNet {
             return Err("wrong input vector lenght");
         } else {
             let mut calculated_layer: Vec<f32> = input;
-            for (m, bias) in &self.weight_matrixes.iter().zip(&self.biases) {
+            /*for (m, bias) in &self.weight_matrixes.iter().zip(&self.biases) {
                 calculated_layer = math::matrix_multiply(m, calculated_layer).iter()
                     .zip(bias).map(| (v, b) | math::sigmoid(v + b)).collect();
-            }
+            }*/
 
            /* let mut calculated_layer: Vec<f32> = input;
             let mut index = 0;

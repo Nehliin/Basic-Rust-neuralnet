@@ -11,9 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b728945-e75c-4f0e-9d09-b32cc33372e9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1b728945-e75c-4f0e-9d09-b32cc33372e9" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,8 +45,8 @@
           <file leaf-file-name="math.rs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+                <state relative-caret-position="435">
+                  <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -69,8 +67,8 @@
           <file leaf-file-name="mod.rs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="50" column="75" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
+                <state relative-caret-position="345">
+                  <caret line="53" column="15" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
                 </state>
               </provider>
             </entry>
@@ -196,7 +194,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.Test neural_net::tests::propagate_forward">
+  <component name="RunManager" selected="Cargo Command.Test neural_net::math::tests::matrix_multiplication">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all" />
     <configuration name="rust_nn" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="rust_nn" TARGET_NAME="rust_nn" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="rust_nn" RUN_TARGET_NAME="rust_nn" />
     <configuration name="Test math::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
@@ -259,9 +257,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo Command.Test neural_net::math::tests::matrix_multiplication" />
         <item itemvalue="Cargo Command.Test neural_net::tests::propagate_forward" />
         <item itemvalue="Cargo Command.Test neural_net::tests" />
-        <item itemvalue="Cargo Command.Test neural_net::math::tests::matrix_multiplication" />
         <item itemvalue="Cargo Command.Test math::tests" />
         <item itemvalue="Cargo Command.Test neural_net::tests::nn_new" />
       </list>
@@ -286,12 +284,12 @@
       <workItem from="1529342232743" duration="6705000" />
       <workItem from="1529432357773" duration="5561000" />
       <workItem from="1529515178844" duration="3232000" />
-      <workItem from="1529603055978" duration="5311000" />
+      <workItem from="1529603055978" duration="5808000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38102000" />
+    <option name="totallyTimeSpent" value="38599000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="2493" height="1415" extended-state="6" />
@@ -552,17 +550,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
+    <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+        <state relative-caret-position="345">
+          <caret line="53" column="15" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
+    <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="50" column="75" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
+        <state relative-caret-position="435">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
         </state>
       </provider>
     </entry>
