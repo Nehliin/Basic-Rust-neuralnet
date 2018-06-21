@@ -19,7 +19,7 @@ pub fn normally_distributed() -> f32{
 pub fn generate_matrix(number_of_columns: &usize, number_of_rows: &usize) -> Matrix {
     let mut matrix = Vec::with_capacity(*number_of_columns);
     for _ in 0..*number_of_columns {
-        matrix.push(vec![0.0; *number_of_rows].into_iter().map(|_| normally_distributed()).collect()); // generate column
+        matrix.push(vec![0.0; *number_of_rows].iter().map(|_| normally_distributed()).collect()); // generate column
     }
 
     return Matrix(matrix);
