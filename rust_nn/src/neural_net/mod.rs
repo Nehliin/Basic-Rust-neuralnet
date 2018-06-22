@@ -48,20 +48,10 @@ impl NeuralNet {
             return Err("wrong input vector lenght");
         } else {
             let mut calculated_layer: Vec<f32> = input;
-            /*for (m, bias) in &self.weight_matrixes.iter().zip(&self.biases) {
-                calculated_layer = math::matrix_multiply(m, calculated_layer).iter()
+            for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
+                calculated_layer = math::matrix_multiply(m, &calculated_layer)?.iter()
                     .zip(bias).map(| (v, b) | math::sigmoid(v + b)).collect();
-            }*/
-
-           /* let mut calculated_layer: Vec<f32> = input;
-            let mut index = 0;
-            for m in &self.weight_matrixes {
-                calculated_layer = math::matrix_multiply(m, &calculated_layer)?;
-                for i in 0..self.biases[index].len() {
-                    calculated_layer[i] += &self.biases[index][i]; // use zip with instead?
-                }
-                index += 1;
-            }*/
+            }
             return Ok(calculated_layer);
         }
     }
@@ -128,11 +118,20 @@ mod tests {
 
         let nn = NeuralNet::new(structure, weight_matrixes, biases);
 
-        let answer = vec![0.55503421, 0.933, 0.9927, 0.36208, 0.999014];
-        if let Ok(calc) = nn.propagate_forward(vec![1.0, 2.0]){ // passes test if propagate fails
-            println!("hej");
-            assert_eq!(answer, calc);
+        let answer = vec![0.55528086, 0.9332355, 0.99274254, 0.36103073, 0.99901676];
+        let mut failed = false;
+        match nn.propagate_forward(vec![1.0, 2.0]) {
+            Ok(calc) => assert_eq!(answer, calc),
+            _ => failed = true
         }
+        assert_eq!(false, failed);
+
+        failed = false;
+        match nn.propagate_forward(vec![1.0, 2.0, 3.4]) {
+            Err(str) => failed = true,
+            _ => ()
+        }
+        assert_eq!(true, failed);
 
     }
 }
