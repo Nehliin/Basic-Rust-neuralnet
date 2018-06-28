@@ -1,5 +1,5 @@
 pub mod neural_net;
-pub mod image_loader;
+pub mod data_loader;
 fn main() {
     println!("Hello, world!");
     /*let matrix: Vec<Vec<f32>> = vec![

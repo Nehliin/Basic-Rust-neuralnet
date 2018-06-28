@@ -1,8 +1,7 @@
-
-
-pub mod math;
+mod math;
 
 use neural_net::math::Matrix;
+use data_loader::*;
 
 #[derive(Debug)]
 pub struct NeuralNet {
@@ -50,10 +49,25 @@ impl NeuralNet {
             let mut calculated_layer: Vec<f32> = input;
             for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
                 calculated_layer = math::matrix_multiply(m, &calculated_layer)?.iter()
-                    .zip(bias).map(| (v, b) | math::sigmoid(v + b)).collect();
+                    .zip(bias)
+                    .map(| (v, b) | math::sigmoid(v + b)).collect();
             }
             return Ok(calculated_layer);
         }
+    }
+
+    pub fn propagate_backwards(&self, learning_rate:f32, ) {
+        let training_data = load_training_data().unwrap();
+        // use sum image
+        nabla_weights = Matrix::new(number_columns, number_rows);
+        nabla_bias =
+        for traning_pair in training_data {
+            (delta_weights, delta_bias) = backpropagate(traning_pair);
+            nabla_weights = nabla_weights.iter().zip(delta_weights)
+                .map(|weight  |);
+
+        }
+
     }
 
 
@@ -128,10 +142,17 @@ mod tests {
 
         failed = false;
         match nn.propagate_forward(vec![1.0, 2.0, 3.4]) {
-            Err(str) => failed = true,
+            Err(_) => failed = true,
             _ => ()
         }
         assert_eq!(true, failed);
 
     }
+
+    #[test]
+    fn propagate_backwards() {
+
+    }
+
+
 }
