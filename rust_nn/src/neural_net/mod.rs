@@ -66,15 +66,14 @@ impl NeuralNet {
                 .zip(bias)
                 .map(| (v, b) | v + b).collect(); //multiplies weights and adds bias
             z_vectors.push(z.clone());
-            math::vec_sigmoid(&mut z);
-            activation = z;
+            activation = math::vec_sigmoid(&z);
             neurons.push(activation.clone());
         }
 
         // räkna ut dC/db
         let mut nabla_biases = Vec::with_capacity(number_of_layers);
         let mut nabla_weights =  Vec::with_capacity(number_of_layers);
-        let delta = math::nabla_bias(activation, expected_output);
+        let delta = math::nabla_bias(&activation, &expected_output);
         nabla_biases.push(delta);
         // dC/dw är  transponat av neuroner * dC/db
         nabla_weights.push(delta.iter().zip(math::transpose(neurons[neurons.len()-2])).map(| (d, n)| d*n).collect());

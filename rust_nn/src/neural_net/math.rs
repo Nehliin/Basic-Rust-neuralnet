@@ -29,12 +29,21 @@ pub fn generate_matrix(number_of_columns: &usize, number_of_rows: &usize) -> Mat
     return Matrix(matrix);
 }
 
-pub fn nabla_bias(){}
+pub fn nabla_bias(activation: &Vec<f32>, z: &Vec<f32>, expected_output: &Vec<f32>) -> Vec<f32>{
+    let cost: Vec<f32> = activation.iter()
+        .zip(expected_output)
+        .map(|(actual, expected)| *actual-*expected).collect();
+    vec_sigmoidprime(z).zip(cost).iter().map(| (s, c) | 2*s*c).collect()
+}
 
 
 
-pub fn vec_sigmoid(v : &mut Vec<f32>) {
-     v.iter_mut().for_each(| e |  *e = sigmoid(*e));
+pub fn vec_sigmoid(v : &Vec<f32>) -> Vec<f32>{
+     v.iter().map(| e |   sigmoid(*e)).collect()
+}
+
+fn vec_sigmoidprime(z: &Vec<f32>) -> Vec<f32> {
+    vec_sigmoid(z).iter().zip(vec_sigmoid(z)).map(|(a,b)| (*a)*(1.0-b)).collect()
 }
 
 pub fn sigmoid(x : f32) -> f32{
@@ -108,9 +117,9 @@ mod tests {
         assert_eq!(0.09673856, sigmoid(-2.234));
         assert_eq!(0.99469614, sigmoid(5.234));
         assert_eq!(0.77451790 ,sigmoid(1.234));
-        let mut test: Vec<f32> =vec![255.0,255.0,255.0];
+        let mut test: Vec<f32> =vec![-2.234,5.234,1.234];
         vec_sigmoid(&mut test);
-        assert_eq!(vec![1.0, 1.0, 1.0], test);
+        assert_eq!(vec![0.09673856, 0.99469614, 0.77451790], test);
     }
 }
 
