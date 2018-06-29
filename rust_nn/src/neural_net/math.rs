@@ -9,6 +9,10 @@ impl Matrix {
     pub fn getRows(&self) -> &Vec<Vec<f32>> {
         return &self.0;
     }
+
+    //vec as matrix?
+    //impl transpose?
+    pub fn transpose(){}
 }
 
 pub fn normally_distributed() -> f32{
@@ -23,6 +27,14 @@ pub fn generate_matrix(number_of_columns: &usize, number_of_rows: &usize) -> Mat
     }
 
     return Matrix(matrix);
+}
+
+pub fn nabla_bias(){}
+
+
+
+pub fn vec_sigmoid(v : &mut Vec<f32>) {
+     v.iter_mut().for_each(| e |  *e = sigmoid(*e));
 }
 
 pub fn sigmoid(x : f32) -> f32{
@@ -95,7 +107,10 @@ mod tests {
         assert_eq!(1.0, sigmoid(345.234));
         assert_eq!(0.09673856, sigmoid(-2.234));
         assert_eq!(0.99469614, sigmoid(5.234));
-        assert_eq!(0.77451790 ,sigmoid(1.234))
+        assert_eq!(0.77451790 ,sigmoid(1.234));
+        let mut test: Vec<f32> =vec![255.0,255.0,255.0];
+        vec_sigmoid(&mut test);
+        assert_eq!(vec![1.0, 1.0, 1.0], test);
     }
 }
 

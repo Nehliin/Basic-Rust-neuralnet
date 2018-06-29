@@ -14,7 +14,7 @@ pub fn load_training_data() -> Result<Vec<(Image, Vec<f32>)>>{
     let image_list = old_load_training_images()?;
     let mut result = Vec::with_capacity(NUMBER_OF_IMAGES);
     for (image, label) in image_list.iter().zip(label_list) {
-        result.push((Image::new(image.0.clone()), label));
+        result.push((Image::new(image.get_pixels().clone()), label));
     }
     Ok(result)
 }

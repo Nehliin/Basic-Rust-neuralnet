@@ -6,12 +6,16 @@ pub const NUMBER_OF_COLUMNS:usize = 28;
 
 use std::fs::File;
 
-pub struct Image(pub Vec<u8>);
+pub struct Image(Vec<u8>);
 
 impl Image {
 
     pub fn new(pixels: Vec<u8>) -> Image {
         Image(pixels)
+    }
+
+    pub fn get_pixels<'a>(&'a self) -> &'a Vec<u8> {
+        &self.0
     }
 
     pub fn create(&self) {

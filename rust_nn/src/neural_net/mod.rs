@@ -45,19 +45,47 @@ impl NeuralNet {
     pub fn propagate_forward<'a>(&self, input: Vec<f32>) -> Result<Vec<f32>, &'a str> {
         if input.len() != self.structure[0] { // if input vector isn't same size as neural_net
             return Err("wrong input vector lenght");
-        } else {
-            let mut calculated_layer: Vec<f32> = input;
-            for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
-                calculated_layer = math::matrix_multiply(m, &calculated_layer)?.iter()
-                    .zip(bias)
-                    .map(| (v, b) | math::sigmoid(v + b)).collect();
-            }
-            return Ok(calculated_layer);
         }
+        let mut calculated_layer: Vec<f32> = input;
+        for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
+            calculated_layer = math::matrix_multiply(m, &calculated_layer)?.iter()
+                .zip(bias)
+                .map(| (v, b) | math::sigmoid(v + b)).collect();
+        }
+        return Ok(calculated_layer);
     }
 
-    pub fn propagate_backwards(&self, learning_rate:f32, ) {
-        let training_data = load_training_data().unwrap();
+    fn backpropagation<'a>(&self, (input, expected_output):(image::Image, Vec<f32>)) -> Result<(), &'a str> {
+        let number_of_layers = self.structure.len();
+        let mut neurons: Vec<Vec<f32>> = Vec::with_capacity(number_of_layers); //neurons for each layer
+        let mut z_vectors: Vec<Vec<f32>> = Vec::with_capacity(number_of_layers); // the z value vector for each layer
+
+        let mut activation = input.get_pixels().iter().map(|a| *a as f32).collect();
+        for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
+            let mut z:Vec<f32> = math::matrix_multiply(m, &activation)?.iter()
+                .zip(bias)
+                .map(| (v, b) | v + b).collect(); //multiplies weights and adds bias
+            z_vectors.push(z.clone());
+            math::vec_sigmoid(&mut z);
+            activation = z;
+            neurons.push(activation.clone());
+        }
+
+        // räkna ut dC/db
+        let mut nabla_biases = Vec::with_capacity(number_of_layers);
+        let mut nabla_weights =  Vec::with_capacity(number_of_layers);
+        let delta = math::nabla_bias(activation, expected_output);
+        nabla_biases.push(delta);
+        // dC/dw är  transponat av neuroner * dC/db
+        nabla_weights.push(delta.iter().zip(math::transpose(neurons[neurons.len()-2])).map(| (d, n)| d*n).collect());
+        // to be continnued
+
+        Ok(())
+
+    }
+
+    pub fn gradient_decent(&self, learning_rate:f32, ) {
+        /*let training_data = load_training_data().unwrap();
         // use sum image
         nabla_weights = Matrix::new(number_columns, number_rows);
         nabla_bias =
@@ -66,7 +94,7 @@ impl NeuralNet {
             nabla_weights = nabla_weights.iter().zip(delta_weights)
                 .map(|weight  |);
 
-        }
+        }*/
 
     }
 
@@ -151,7 +179,7 @@ mod tests {
 
     #[test]
     fn propagate_backwards() {
-
+        // test with test data
     }
 
 

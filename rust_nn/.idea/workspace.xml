@@ -31,20 +31,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mod.rs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mod.rs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
+            <state relative-caret-position="166">
+              <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="math.rs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="math.rs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="-261">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+              <folding>
+                <element signature="e#786#787#0" expanded="true" />
+                <element signature="e#841#842#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,8 +56,8 @@
       <file leaf-file-name="mod.rs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data_loader/mod.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="59" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="59" />
+            <state relative-caret-position="-50">
+              <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -66,11 +70,13 @@
       <file leaf-file-name="image.rs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data_loader/image.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+            <state relative-caret-position="116">
+              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
               <folding>
                 <element signature="e#255#256#0" expanded="true" />
                 <element signature="e#283#284#0" expanded="true" />
+                <element signature="e#326#327#0" expanded="true" />
+                <element signature="e#348#349#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,15 +122,15 @@
         <option value="$PROJECT_DIR$/src/neural_net/Neuron.rs" />
         <option value="$PROJECT_DIR$/src/neural_net/layer/mod.rs" />
         <option value="$PROJECT_DIR$/src/lib.rs" />
-        <option value="$PROJECT_DIR$/src/neural_net/math.rs" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Cargo.toml" />
         <option value="$PROJECT_DIR$/src/image_loader.rs" />
         <option value="$PROJECT_DIR$/src/main.rs" />
         <option value="$PROJECT_DIR$/src/data_loader/image_data.rs" />
-        <option value="$PROJECT_DIR$/src/data_loader/image.rs" />
         <option value="$PROJECT_DIR$/src/data_loader/mod.rs" />
+        <option value="$PROJECT_DIR$/src/data_loader/image.rs" />
         <option value="$PROJECT_DIR$/src/neural_net/mod.rs" />
+        <option value="$PROJECT_DIR$/src/neural_net/math.rs" />
       </list>
     </option>
   </component>
@@ -205,7 +211,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.Test data_loader::tests::load_test">
+  <component name="RunManager" selected="Cargo Command.Test neural_net::math::tests::sigmoid_test">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all" />
     <configuration name="rust_nn" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="rust_nn" TARGET_NAME="rust_nn" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="rust_nn" RUN_TARGET_NAME="rust_nn" />
     <configuration name="Test data_loader::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
@@ -232,9 +238,9 @@
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
     </configuration>
-    <configuration name="Test image_loader::tests::loadTest" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+    <configuration name="Test neural_net::math::tests::sigmoid_test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
-      <option name="command" value="test --package rust_nn --bin rust_nn image_loader::tests::loadTest -- --exact" />
+      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::math::tests::sigmoid_test -- --exact" />
       <option name="nocapture" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -261,18 +267,18 @@
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.rust_nn" />
       <item itemvalue="Cargo Command.Test neural_net::tests" />
-      <item itemvalue="Cargo Command.Test image_loader::tests::loadTest" />
       <item itemvalue="Cargo Command.Test data_loader::tests::loadTest" />
       <item itemvalue="Cargo Command.Test data_loader::tests" />
       <item itemvalue="Cargo Command.Test data_loader::tests::load_test" />
+      <item itemvalue="Cargo Command.Test neural_net::math::tests::sigmoid_test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo Command.Test neural_net::math::tests::sigmoid_test" />
         <item itemvalue="Cargo Command.Test data_loader::tests::load_test" />
         <item itemvalue="Cargo Command.Test data_loader::tests::loadTest" />
         <item itemvalue="Cargo Command.Test data_loader::tests" />
         <item itemvalue="Cargo Command.Test neural_net::tests" />
-        <item itemvalue="Cargo Command.Test image_loader::tests::loadTest" />
       </list>
     </recent_temporary>
   </component>
@@ -300,7 +306,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63899000" />
+    <option name="totallyTimeSpent" value="69517000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -549,17 +555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data_loader/image.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-          <folding>
-            <element signature="e#255#256#0" expanded="true" />
-            <element signature="e#283#284#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/libstd/sys_common/backtrace.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -570,24 +565,41 @@
     <entry file="file://$PROJECT_DIR$/img.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data_loader/mod.rs">
+    <entry file="file://$PROJECT_DIR$/src/data_loader/image.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="59" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="59" />
+        <state relative-caret-position="116">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding>
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
+    <entry file="file://$PROJECT_DIR$/src/data_loader/mod.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="-50">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
+        <state relative-caret-position="166">
+          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-261">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding>
+            <element signature="e#786#787#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
