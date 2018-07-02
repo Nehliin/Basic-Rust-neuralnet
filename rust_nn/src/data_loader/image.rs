@@ -1,6 +1,6 @@
 extern crate image;
 
-pub const NUMBER_OF_IMAGES:usize = 60000;
+
 pub const NUMBER_OF_ROWS:usize = 28;
 pub const NUMBER_OF_COLUMNS:usize = 28;
 

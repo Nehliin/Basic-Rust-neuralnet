@@ -35,6 +35,18 @@ pub fn vec_sub(v1 : &Vec<f32>, v2: &Vec<f32>) -> Vec<f32>{
         .map(|(u, v)| *u - v).collect()
 }
 
+pub fn vec_get_max(vec: &Vec<f32>) -> usize {
+    let mut max = vec[0];
+    let mut index = 0;
+    for (i, v) in vec.iter().enumerate() {
+        if *v > max {
+            max = *v;
+            index = i;
+        }
+    }
+    index
+}
+
 pub fn normally_distributed() -> f32{
     let normal_distribution = Normal::new(0.0, 1.0);
     return normal_distribution.sample(&mut rand::thread_rng()) as f32;
@@ -56,7 +68,7 @@ pub fn sigmoid(x : f32) -> f32{
 }
 
 fn sigmoid_prime(x : f32) -> f32 {
-    E.powf(x) / (E.powf(x) + 1.0).powf(2.0)
+    sigmoid(x)*(1.0-sigmoid(x))
 }
 
 
@@ -77,6 +89,16 @@ mod tests {
         assert_eq!(vec![0.09673856, 0.99469614, 0.77451790], test);
     }
 
+
+    #[test]
+    fn vec_max() {
+        let v1 = vec![1.0, 2.0, 3.0];
+        let v2 = vec![2.0, -2.0, 2.0];
+        let v3 = vec![1.0, 3.0, -3.0];
+        assert_eq!(2, vec_get_max(&v1));
+        assert_eq!(0, vec_get_max(&v2));
+        assert_eq!(1, vec_get_max(&v3));
+    }
 
     #[test]
     fn nabla_weights() {
