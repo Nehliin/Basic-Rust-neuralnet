@@ -25,6 +25,15 @@ pub fn nabla_weight(delta_vec: &Vec<f32>, activation_vec: &Vec<f32>) -> Matrix {
     Matrix(rows)
 }
 
+pub fn vec_adder(v1 : &Vec<f32>, v2: &Vec<f32>) -> Vec<f32>{
+    v1.iter().zip(v2)
+        .map(|(u, v)| *u + v).collect()
+}
+
+pub fn vec_sub(v1 : &Vec<f32>, v2: &Vec<f32>) -> Vec<f32>{
+    v1.iter().zip(v2)
+        .map(|(u, v)| *u - v).collect()
+}
 
 pub fn normally_distributed() -> f32{
     let normal_distribution = Normal::new(0.0, 1.0);

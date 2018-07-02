@@ -44,6 +44,29 @@ impl std::ops::Add for Matrix {
     }
 }
 
+impl std::ops::Sub for Matrix {
+    type Output = Matrix;
+
+    fn sub(self, other: Matrix) -> Matrix {
+        Matrix(self.get_rows().iter().zip(other.get_rows())
+            .map(|(v1, v2)| v1.iter().zip(v2)
+                .map(|(u, w)| u - w).collect())
+            .collect())
+    }
+}
+
+impl std::ops::Mul for Matrix {
+    type Output = Matrix;
+
+    fn mul(self, other: f32) -> Matrix {
+        Matrix(self.get_rows().iter().map(| v1| v1.iter()
+                .map(|(u)| u*other).collect())
+            .collect())
+    }
+}
+
+
+
 pub fn matrix_multiply<'a>(matrix: &Matrix, vec: &Vec<f32>) -> Result<Vec<f32>, &'a str> {
     if matrix.get_rows()[0].len() != vec.len() {
         println!("matrix len {}, vec len {}", matrix.get_rows()[0].len(), vec.len());
