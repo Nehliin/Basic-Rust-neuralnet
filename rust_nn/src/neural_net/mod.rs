@@ -1,6 +1,6 @@
 mod math;
 
-use neural_net::math::Matrix;
+use neural_net::math::matrix::Matrix;
 use data_loader::*;
 
 #[derive(Debug)]
@@ -21,7 +21,7 @@ impl NeuralNet {
             biases.push(bias_layer.into_iter().map(|_| math::normally_distributed()).collect()); // fill with normally distributed values
 
             if let Some(nr_neurons) = structure.get(i) {
-                weight_matrixes.push(math::generate_matrix(&structure[i-1], nr_neurons));
+                weight_matrixes.push(math::matrix::generate_matrix(&structure[i-1], nr_neurons));
             }
 
         }
@@ -48,53 +48,72 @@ impl NeuralNet {
         }
         let mut calculated_layer: Vec<f32> = input;
         for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
-            calculated_layer = math::matrix_multiply(m, &calculated_layer)?.iter()
+            calculated_layer = math::matrix::matrix_multiply(m, &calculated_layer)?.iter()
                 .zip(bias)
                 .map(| (v, b) | math::sigmoid(v + b)).collect();
         }
         return Ok(calculated_layer);
     }
 
-    fn backpropagation<'a>(&self, (input, expected_output):(image::Image, Vec<f32>)) -> Result<(), &'a str> {
+    pub fn backpropagation<'a>(&self, (input, expected_output):(image::Image, Vec<f32>)) -> Result<(Vec<Matrix>, Vec<Vec<f32>>), &'a str> {
+        println!("Started");
         let number_of_layers = self.structure.len();
         let mut neurons: Vec<Vec<f32>> = Vec::with_capacity(number_of_layers); //neurons for each layer
         let mut z_vectors: Vec<Vec<f32>> = Vec::with_capacity(number_of_layers); // the z value vector for each layer
 
+        // feeds forward
         let mut activation = input.get_pixels().iter().map(|a| *a as f32).collect();
         for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
-            let mut z:Vec<f32> = math::matrix_multiply(m, &activation)?.iter()
+            let mut z:Vec<f32> = math::matrix::matrix_multiply(m, &activation)?.iter()
                 .zip(bias)
                 .map(| (v, b) | v + b).collect(); //multiplies weights and adds bias
             z_vectors.push(z.clone());
             activation = math::vec_sigmoid(&z);
             neurons.push(activation.clone());
         }
-
-        // räkna ut dC/db
+        println!("Middle");
+        // calculate partial derivatives
         let mut nabla_biases = Vec::with_capacity(number_of_layers);
-        let mut nabla_weights =  Vec::with_capacity(number_of_layers);
-        let delta = math::nabla_bias(&activation, &expected_output);
-        nabla_biases.push(delta);
+        let mut nabla_weights: Vec<Matrix> =  Vec::with_capacity(number_of_layers);
+        let mut delta = math::nabla_bias(&activation, &z_vectors[z_vectors.len()-1], &expected_output);
+        nabla_biases.push(delta.clone()); // måste bli reversed
         // dC/dw är  transponat av neuroner * dC/db
-        nabla_weights.push(delta.iter().zip(math::transpose(neurons[neurons.len()-2])).map(| (d, n)| d*n).collect());
-        // to be continnued
-
-        Ok(())
-
+        //println!("DELTA {:?}", delta.len());
+        nabla_weights.push(math::nabla_weight(&delta, &neurons[neurons.len()-2])); // måste reverseras
+        //println!("Matrixs dim: rows {}, row len {}", nabla_weights[0].get_rows().len(), nabla_weights[0].get_rows()[0].len());
+        for l in 2..self.structure.len() {
+            let bias_index = nabla_biases.len();
+            let weight_index = nabla_weights.len();
+            //let neurons_index = neurons.len();
+            let mut z = z_vectors[(z_vectors.len()-l)].clone();
+            let mut sp = math::vec_sigmoidprime(&z);
+            if let Ok(result) = math::matrix::matrix_multiply(&self.weight_matrixes[self.weight_matrixes.len()-l+1].transpose(), &delta) {
+                delta = result.iter().zip(sp).map(| (r, s) | *r*s).collect();
+            }
+            println!("bias index: {}, l: {}", bias_index, l);
+            nabla_biases[bias_index-l] = delta.clone();
+            nabla_weights[weight_index-l] = math::nabla_weight(&delta, &neurons[neurons.len()-l-1])
+        }
+        println!("{:?}", nabla_weights[0]);
+        nabla_weights.reverse();
+        println!("{:?}", nabla_weights[0]);
+        Ok((nabla_weights, nabla_biases))
     }
 
-    pub fn gradient_decent(&self, learning_rate:f32, ) {
-        /*let training_data = load_training_data().unwrap();
+    pub fn gradient_decent<'a>(&'a self, learning_rate:f32 ) -> Result<(), &'a str> {
+        let training_data = load_training_data().unwrap();
         // use sum image
-        nabla_weights = Matrix::new(number_columns, number_rows);
-        nabla_bias =
-        for traning_pair in training_data {
-            (delta_weights, delta_bias) = backpropagate(traning_pair);
-            nabla_weights = nabla_weights.iter().zip(delta_weights)
-                .map(|weight  |);
+        let mut nabla_weights:Vec<Matrix> = Vec::with_capacity(self.weight_matrixes.len());
+        let mut nabla_biases:Vec<Vec<f32>> = Vec::with_capacity(self.biases.len());
+        for traning_pair in training_data { // avrage backprop diffs
+            let (delta_weights, delta_bias) = self.backpropagation(traning_pair)?;
+           // nabla_weights = nabla_weights + delta_weights; // add + operator to matrix
+           // nabla_biases = nabla_biases + delta_bias; // use biases as matrix
 
-        }*/
-
+        }
+        Ok(())
+        // apply to network weights and biases
+        // do 1 epoch or more
     }
 
 
@@ -115,24 +134,22 @@ mod tests {
         assert_eq!(2, nn.weight_matrixes.len());
 
         assert_ne!(nn.biases[0], nn.biases[1]);
-
-        assert_eq!(2, nn.weight_matrixes[0].getRows().len()); //number of columns in connecting matrix between layer 0 and 1
-        let row_count = 3;
-        let mut prev_col = vec![0.0, 0.0, 0.0];
-        for col in nn.weight_matrixes[0].getRows() {
-            assert_eq!(row_count, col.len());
-            assert_ne!(prev_col, *col);
-            prev_col = col.clone();
+        assert_eq!(3, nn.weight_matrixes[0].get_rows().len()); //number of rows in connecting matrix between layer 0 and 1
+        assert_eq!(2, nn.weight_matrixes[0].get_rows()[0].len()); //number of columns in connecting matrix between layer 0 and 1
+        let mut prev_row = vec![0.0, 0.0, 0.0];
+        for row in nn.weight_matrixes[0].get_rows() {
+            assert_eq!(2, row.len());
+            assert_ne!(prev_row, *row);
+            prev_row = row.clone();
         }
 
-
-        assert_eq!(3, nn.weight_matrixes[1].getRows().len()); //number of columns in connecting matrix between layer 0 and 1
-        let row_count = 5;
-        let mut prev_col = vec![0.0;5];
-        for col in nn.weight_matrixes[1].getRows() {
-            assert_eq!(row_count, col.len());
-            assert_ne!(prev_col, *col);
-            prev_col = col.clone();
+        assert_eq!(5, nn.weight_matrixes[1].get_rows().len()); //number of rows in connecting matrix between layer 1 and 2
+        assert_eq!(3, nn.weight_matrixes[1].get_rows()[0].len()); //number of columns in connecting matrix between layer 1 and 2
+        let mut prev_row = vec![0.0;3];
+        for row in nn.weight_matrixes[1].get_rows() {
+            assert_eq!(3, row.len());
+            assert_ne!(prev_row, *row);
+            prev_row = row.clone();
         }
     }
 
@@ -141,12 +158,12 @@ mod tests {
     fn propagate_forward(){
         let structure = vec![2, 3, 5];
         let mut weight_matrixes: Vec<Matrix> = Vec::with_capacity(2);
-        weight_matrixes.push(math::Matrix(vec![
+        weight_matrixes.push(Matrix(vec![
             vec![3.0, 1.5],
             vec![2.0, -3.0],
             vec![-1.1, 1.2]
         ]));
-        weight_matrixes.push(math::Matrix(vec![
+        weight_matrixes.push(Matrix(vec![
             vec![1.0, 1.5, 1.2],
             vec![2.0, -3.0, 4.5],
             vec![1.1, 1.2, -1.4],
@@ -178,7 +195,16 @@ mod tests {
 
     #[test]
     fn propagate_backwards() {
-        // test with test data
+        let nn = NeuralNet::generate_new(vec![784,16,16,10]);
+        println!("number of weight matrixes {}, number of rows {}, number of cols {}", nn.weight_matrixes.len(),
+                 nn.weight_matrixes[0].get_rows().len(), nn.weight_matrixes[0].get_rows()[0].len());
+        for tuple in load_training_data().unwrap() {
+            if let Err(some) =  nn.backpropagation(tuple) {
+                println!("{}",some)
+            }
+            break;
+        }
+
     }
 
 
