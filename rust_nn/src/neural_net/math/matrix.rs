@@ -33,13 +33,28 @@ impl Matrix {
     }
 }
 
+impl std::fmt::Display for Matrix {
+
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        let transpose = self.transpose();
+        let mut print = String::new();
+        for row in transpose.get_rows().iter() {
+            for element in row {
+                print.push_str(element.to_string().as_str());
+                print.push_str(", ");
+            }
+            print.push('\n');
+        }
+        write!(f, "{}", print)
+    }
+}
+
 impl std::ops::Add for Matrix {
     type Output = Matrix;
 
     fn add(self, other: Matrix) -> Matrix {
         Matrix(self.get_rows().iter().zip(other.get_rows())
-            .map(|(v1, v2)| v1.iter().zip(v2)
-                .map(|(u, w)| *u + *w).collect())
+            .map(|(v1, v2)| super::vec_adder(&v1, &v2))
             .collect())
     }
 }
@@ -132,6 +147,8 @@ mod test{
             vec![4.0, 5.0, 6.0],
             vec![7.0, 8.0, 9.0]
         ]);
+
+        println!("{}",m1);
 
         let expected = Matrix(vec![
             vec![2.0, 4.0, 6.0],

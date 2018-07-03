@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/bin/cmake
+CMAKE_COMMAND = /snap/clion/27/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
+RM = /snap/clion/27/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/oskarnehlin/Desktop/Rust/rust_nn
+CMAKE_SOURCE_DIR = /home/oskar/Desktop/Rust/rust_nn
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/oskarnehlin/Desktop/Rust/rust_nn/cmake-build-debug
+CMAKE_BINARY_DIR = /home/oskar/Desktop/Rust/rust_nn/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/rust_nn.dir/depend.make
@@ -66,6 +66,6 @@ CMakeFiles/rust_nn.dir/clean:
 .PHONY : CMakeFiles/rust_nn.dir/clean
 
 CMakeFiles/rust_nn.dir/depend:
-	cd /Users/oskarnehlin/Desktop/Rust/rust_nn/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/oskarnehlin/Desktop/Rust/rust_nn /Users/oskarnehlin/Desktop/Rust/rust_nn /Users/oskarnehlin/Desktop/Rust/rust_nn/cmake-build-debug /Users/oskarnehlin/Desktop/Rust/rust_nn/cmake-build-debug /Users/oskarnehlin/Desktop/Rust/rust_nn/cmake-build-debug/CMakeFiles/rust_nn.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/oskar/Desktop/Rust/rust_nn/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/oskar/Desktop/Rust/rust_nn /home/oskar/Desktop/Rust/rust_nn /home/oskar/Desktop/Rust/rust_nn/cmake-build-debug /home/oskar/Desktop/Rust/rust_nn/cmake-build-debug /home/oskar/Desktop/Rust/rust_nn/cmake-build-debug/CMakeFiles/rust_nn.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rust_nn.dir/depend
 

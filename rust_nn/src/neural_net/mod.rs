@@ -64,7 +64,7 @@ impl NeuralNet {
         let mut z_vectors: Vec<Vec<f32>> = Vec::with_capacity(number_of_layers); // the z value vector for each layer
 
         // feeds forward
-        let mut activation: Vec<f32> = input.get_pixels().iter().map(|a| *a as f32).collect();
+        let mut activation: Vec<f32> = input.get_pixels()[0..5].iter().map(|a| *a as f32).collect();
         neurons.push(activation.clone());
 
         for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
@@ -118,9 +118,9 @@ impl NeuralNet {
         println!("Started");
         for   traning_pair in  training_data { // avrage backprop diffs
 
-           /* if index > 3000 {
+            if i > 3.0 {
                 break;
-            }*/
+            }
 
             if i % 2000.0 == 0.0 {
                 println!("traning: {}% complete", (i  / 60000.0)*100.0)
@@ -134,16 +134,17 @@ impl NeuralNet {
 
                 if let Some(m1) = nabla_weights.get_mut(i) {
                     //println!("used weight");
-                    //println!("before: m1 {:?}", *m1);
-                    //println!("before: dw {:?}", dw);
+                    println!("before: m1 {}", *m1);
+                    println!("before: dw {}", dw);
                     *m1 = Matrix(m1.get_rows().clone()) + Matrix(dw.get_rows().clone());
-                    //println!("after: m1 {:?}", *m1);
+                    println!("after: m1 {}", *m1);
+                    break;
                 } else {
                     weight_flag = true;
                 }
 
                 if weight_flag {
-                  //  println!("pushed weight");
+                    println!("pushed weight");
                     nabla_weights.push(Matrix(dw.get_rows().clone()));
                     weight_flag = false;
                 }
@@ -166,8 +167,8 @@ impl NeuralNet {
             i += 1.0;
            // nabla_weights = nabla_weights + delta_weights; // add + operator to matrix
            // nabla_biases = nabla_biases + delta_bias; // use biases as matrix
-
         }
+
         self.weight_matrixes = self.weight_matrixes.iter().zip(nabla_weights)
             .map(|(m1, m2)| Matrix(m1.get_rows().clone()) - m2 ).collect();
 
@@ -272,7 +273,7 @@ mod tests {
 
     #[test]
     fn propagate_backwards() {
-        let mut nn = NeuralNet::generate_new(vec![784,16,16,10]);
+        let mut nn = NeuralNet::generate_new(vec![2,3,5]);
         println!("number of weight matrixes {}, number of rows {}, number of cols {}", nn.weight_matrixes.len(),
                  nn.weight_matrixes[0].get_rows().len(), nn.weight_matrixes[0].get_rows()[0].len());
         //for tuple in load_training_data().unwrap() {
