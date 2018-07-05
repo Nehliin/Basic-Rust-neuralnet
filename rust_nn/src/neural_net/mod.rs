@@ -64,7 +64,7 @@ impl NeuralNet {
         let mut z_vectors: Vec<Vec<f32>> = Vec::with_capacity(number_of_layers); // the z value vector for each layer
 
         // feeds forward
-        let mut activation: Vec<f32> = input.get_pixels()[0..5].iter().map(|a| *a as f32).collect();
+        let mut activation: Vec<f32> = input.get_pixels().iter().map(|a| *a as f32).collect();
         neurons.push(activation.clone());
 
         for (m, bias) in self.weight_matrixes.iter().zip(&self.biases) {
@@ -73,11 +73,12 @@ impl NeuralNet {
                 .map(| (v, b) | v + b).collect(); //multiplies weights and adds bias
             z_vectors.push(z.clone());
             activation = math::vec_sigmoid(&z);
-          //  println!("ACTIVATION: {:?}", activation);
+         //   println!("ACTIVATION: {:?}", activation);
             neurons.push(activation.clone());
         }
         //println!("Z vectors {:?}", z_vectors);
         // calculate partial derivatives
+       // println!("activation {:?}", &activation);
         let mut nabla_biases = Vec::with_capacity(number_of_layers-1);
         let mut nabla_weights: Vec<Matrix> =  Vec::with_capacity(number_of_layers-1);
         let mut delta = math::nabla_bias(&activation, &z_vectors[z_vectors.len()-1], &expected_output);
@@ -87,19 +88,21 @@ impl NeuralNet {
         //println!("1 {:?}", math::nabla_weight(&delta, &neurons[neurons.len()-2]));
         nabla_weights.push(math::nabla_weight(&delta, &neurons[neurons.len()-2])); // måste reverseras
         //println!("Matrixs dim: rows {}, row len {}", nabla_weights[0].get_rows().len(), nabla_weights[0].get_rows()[0].len());
+        println!("NEURONS: {:?}", &neurons);
         for l in 2..self.structure.len() {
             let mut z = z_vectors[(z_vectors.len()-l)].clone();
-            //println!("NEW Z {:?}", z);
+            println!("NEW Z {:?}", z);
             let mut sp = math::vec_sigmoidprime(&z);
-            //println!("prime {:?}", sp);
+            println!("prime {:?}", sp);
             if let Ok(result) = math::matrix::matrix_multiply(&self.weight_matrixes[self.weight_matrixes.len()-l+1].transpose(), &delta) {
                 delta = result.iter().zip(sp).map(| (r, s) | *r*s).collect();
             } else {
                 println!("PANIK");
             }
-            //println!("delta: {:?}", delta);
+            println!("delta: {:?}", delta);
+            println!("activation {:?}", &neurons[neurons.len()-l-1]);
             nabla_biases.push(delta.clone());
-            //println!("2 {:?}", math::nabla_weight(&delta, &neurons[neurons.len()-l-1]));
+            println!("{}", math::nabla_weight(&delta, &neurons[neurons.len()-l-1]));
             nabla_weights.push(math::nabla_weight(&delta, &neurons[neurons.len()-l-1]));
         }
 
@@ -134,10 +137,10 @@ impl NeuralNet {
 
                 if let Some(m1) = nabla_weights.get_mut(i) {
                     //println!("used weight");
-                    println!("before: m1 {}", *m1);
-                    println!("before: dw {}", dw);
+                    //println!("before: m1 {}", *m1);
+                    //println!("before: dw {}", dw);
                     *m1 = Matrix(m1.get_rows().clone()) + Matrix(dw.get_rows().clone());
-                    println!("after: m1 {}", *m1);
+                    //println!("after: m1 {}", *m1);
                     break;
                 } else {
                     weight_flag = true;

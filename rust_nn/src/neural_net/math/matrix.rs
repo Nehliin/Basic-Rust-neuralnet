@@ -84,7 +84,7 @@ impl std::ops::Sub for Matrix {
 
 pub fn matrix_multiply<'a>(matrix: &Matrix, vec: &Vec<f32>) -> Result<Vec<f32>, &'a str> {
     if matrix.get_rows()[0].len() != vec.len() {
-        println!("matrix len {}, vec len {}", matrix.get_rows()[0].len(), vec.len());
+        println!("falied multiply: matrix len {}, vec len {}", matrix.get_rows()[0].len(), vec.len());
         return Err("Missmatch of row lenght and vec to be multiplied");
     } else {
         let mut result = vec![0.0;matrix.get_rows().len()];//Vec::with_capacity(matrix.getColumns().len());

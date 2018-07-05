@@ -1,8 +1,8 @@
 extern crate image;
 
 
-pub const NUMBER_OF_ROWS:usize = 28;
-pub const NUMBER_OF_COLUMNS:usize = 28;
+pub const NUMBER_OF_ROWS:usize = 7;
+pub const NUMBER_OF_COLUMNS:usize = 2;
 
 use std::fs::File;
 
