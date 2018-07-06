@@ -2,26 +2,26 @@
 use std;
 
 #[derive(Debug)]
-pub struct Matrix(pub Vec<Vec<f32>>);
+pub struct Matrix(pub Vec<Vec<f64>>);
 
 impl Matrix {
 
     pub fn new(number_of_columns: usize, number_of_rows: usize) -> Matrix {
-        let mut rows:Vec<Vec<f32>> = Vec::with_capacity(number_of_rows);
+        let mut rows:Vec<Vec<f64>> = Vec::with_capacity(number_of_rows);
         for _ in 0..number_of_rows {
             rows.push(vec![0.0;number_of_columns]);
         }
         Matrix(rows)
     }
-    pub fn get_rows(&self) -> &Vec<Vec<f32>> {
+    pub fn get_rows(&self) -> &Vec<Vec<f64>> {
         return &self.0;
     }
 
     //vec as matrix?
     //impl transpose?
     pub fn transpose(&self) -> Matrix {
-        let mut new_rows: Vec<Vec<f32>> = Vec::with_capacity(self.0[0].len());
-        let mut new_row:Vec<f32> = Vec::with_capacity(self.0.len());
+        let mut new_rows: Vec<Vec<f64>> = Vec::with_capacity(self.0[0].len());
+        let mut new_row:Vec<f64> = Vec::with_capacity(self.0.len());
         for i in 0..self.0[0].len() { // col length
             for row in &self.0 {
                 new_row.push(row[i])
@@ -70,19 +70,11 @@ impl std::ops::Sub for Matrix {
     }
 }
 
-/*impl std::ops::Mul for Matrix {
-    type Output = Matrix;
-
-    fn mul(self, other: f32) -> Matrix {
-        Matrix(self.get_rows().iter().map(| v1| v1.iter()
-                .map(|u| *u*other).collect())
-            .collect())
-    }
-}*/
 
 
 
-pub fn matrix_multiply<'a>(matrix: &Matrix, vec: &Vec<f32>) -> Result<Vec<f32>, &'a str> {
+
+pub fn matrix_multiply<'a>(matrix: &Matrix, vec: &Vec<f64>) -> Result<Vec<f64>, &'a str> {
     if matrix.get_rows()[0].len() != vec.len() {
         println!("falied multiply: matrix len {}, vec len {}", matrix.get_rows()[0].len(), vec.len());
         return Err("Missmatch of row lenght and vec to be multiplied");
@@ -119,11 +111,11 @@ mod test{
             vec![2.0, -3.0, 4.5],
             vec![1.1, 1.2, -1.4]
         ]);
-        let wrong_size: Vec<f32> = vec![1.2, 2.3, 3.4, 4.0];
+        let wrong_size: Vec<f64> = vec![1.2, 2.3, 3.4, 4.0];
         assert_eq!(true, matrix_multiply(&matrix, &wrong_size).is_err());
 
-        let right_size: Vec<f32> = vec![1.2, 2.3, 3.4];
-        let answer: Vec<f32> = vec![8.73, 10.800001, -0.6800003];
+        let right_size: Vec<f64> = vec![1.2, 2.3, 3.4];
+        let answer: Vec<f64> = vec![8.73, 10.800001, -0.6800003];
 
         let calculated = matrix_multiply(&matrix, &right_size);
 
@@ -167,7 +159,7 @@ mod test{
         for col in matrix.get_rows() {
             assert_eq!(3, col.len());
             assert_ne!(prev_col, *col); // check that columns are unique
-            let mut prev = 2.0 as f32; // a value that can never be taken
+            let mut prev = 2.0 as f64; // a value that can never be taken
             for x in col {
                 assert_ne!(prev, *x);
                 println!("{}",*x);

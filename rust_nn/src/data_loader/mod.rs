@@ -8,7 +8,7 @@ use self::image::*;
 
 
 // use lifetimes instead this implementation is retarded
-pub fn load_training_data() -> Result<Vec<(Image, Vec<f32>)>> {
+pub fn load_training_data() -> Result<Vec<(Image, Vec<f64>)>> {
     let number_of_images = 60000;
     let label_list = load_labels("train-labels-idx1-ubyte", number_of_images)?;
     let image_list = old_load_images("train-images-idx3-ubyte", number_of_images)?;
@@ -19,7 +19,7 @@ pub fn load_training_data() -> Result<Vec<(Image, Vec<f32>)>> {
     Ok(result)
 }
 
-pub fn load_test_data() -> Result<Vec<(Image, Vec<f32>)>> {
+pub fn load_test_data() -> Result<Vec<(Image, Vec<f64>)>> {
     let number_of_images = 10000;
     let label_list = load_labels("t10k-labels.idx1-ubyte", number_of_images)?;
     let image_list = old_load_images("t10k-images.idx3-ubyte", number_of_images)?;
@@ -35,13 +35,13 @@ pub fn load_test_data() -> Result<Vec<(Image, Vec<f32>)>> {
 The labels are actually a int between 0-9 but I return a probability vector that's
 easy to use when calculating the cost to the cost function in the back-propagation.
 */
-fn load_labels<'a>(path: &'a str, number_of_labels: usize) -> Result<Vec<Vec<f32>>> {
+fn load_labels<'a>(path: &'a str, number_of_labels: usize) -> Result<Vec<Vec<f64>>> {
     let label_file = File::open(path)?;
     let mut buf = BufReader::with_capacity(number_of_labels + 8, label_file); // 8 bytes of metadata
 
     let bytes = buf.fill_buf()?;
     let mut labes = Vec::with_capacity(number_of_labels);
-    let mut prob_vec = vec![0.0 as f32;10];
+    let mut prob_vec = vec![0.0 as f64;10];
     for label in bytes[8..].iter() {
         //println!("{}",*label)
         prob_vec[*label as usize] = 1.0;
@@ -86,7 +86,7 @@ mod tests{
         assert_eq!(1.0, vec[4]); //assert it's a 4 (0 is index 0)
         let mut modified = vec.clone();
         modified.remove(4);
-        assert_eq!(vec![0.0 as f32; 9], modified);
+        assert_eq!(vec![0.0 as f64; 9], modified);
     }
 
 }

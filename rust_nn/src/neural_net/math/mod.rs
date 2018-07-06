@@ -3,18 +3,20 @@ extern crate rand;
 pub mod matrix;
 use neural_net::math::rand::distributions::{Normal, Distribution};
 use neural_net::math::matrix::Matrix;
-use std::f32::consts::E;
+use std::f64::consts::E;
 
-pub fn nabla_bias(activation: &Vec<f32>, z: &Vec<f32>, expected_output: &Vec<f32>) -> Vec<f32>{
-    let cost: Vec<f32> = activation.iter()
+pub fn nabla_bias(activation: &Vec<f64>, zprime: &Vec<f64>, expected_output: &Vec<f64>) -> Vec<f64>{
+    let cost: Vec<f64> = activation.iter()
         .zip(expected_output)
-        .map(|(actual, expected)| *actual-*expected).collect();
-    vec_sigmoidprime(z).iter().zip(cost).map(| (sigmoid_prime, cost) | 2.0*sigmoid_prime*cost).collect()
+        .map(|(actual, expected)| (*actual-*expected)).collect();
+    //println!("activation: {:?}", activation);
+    //println!("cost: {:?}", cost);
+    zprime.iter().zip(cost).map(| (sigmoid_prime, cost) | sigmoid_prime*cost).collect()
 }
 
-pub fn nabla_weight(delta_vec: &Vec<f32>, activation_vec: &Vec<f32>) -> Matrix {
-    let mut rows: Vec<Vec<f32>> = Vec::with_capacity(delta_vec.len());
-    let mut row: Vec<f32> = Vec::with_capacity(activation_vec.len());
+pub fn nabla_weight(delta_vec: &Vec<f64>, activation_vec: &Vec<f64>) -> Matrix {
+    let mut rows: Vec<Vec<f64>> = Vec::with_capacity(delta_vec.len());
+    let mut row: Vec<f64> = Vec::with_capacity(activation_vec.len());
     for d in delta_vec {
         for a in activation_vec {
             row.push((*d)*(*a));
@@ -25,17 +27,17 @@ pub fn nabla_weight(delta_vec: &Vec<f32>, activation_vec: &Vec<f32>) -> Matrix {
     Matrix(rows)
 }
 
-pub fn vec_adder(v1 : &Vec<f32>, v2: &Vec<f32>) -> Vec<f32>{
+pub fn vec_adder(v1 : &Vec<f64>, v2: &Vec<f64>) -> Vec<f64>{
     v1.iter().zip(v2)
         .map(|(u, v)| *u + v).collect()
 }
 
-pub fn vec_sub(v1 : &Vec<f32>, v2: &Vec<f32>) -> Vec<f32>{
+pub fn vec_sub(v1 : &Vec<f64>, v2: &Vec<f64>, learning_rate:f64) -> Vec<f64>{
     v1.iter().zip(v2)
-        .map(|(u, v)| *u - v).collect()
+        .map(|(u, v)| (*u - v)*learning_rate).collect()
 }
 
-pub fn vec_get_max(vec: &Vec<f32>) -> usize {
+pub fn vec_get_max(vec: &Vec<f64>) -> usize {
     let mut max = vec[0];
     let mut index = 0;
     for (i, v) in vec.iter().enumerate() {
@@ -47,27 +49,33 @@ pub fn vec_get_max(vec: &Vec<f32>) -> usize {
     index
 }
 
-pub fn normally_distributed() -> f32{
+pub fn matrix_mul(matrix: &Matrix, c :f64) -> Matrix {
+    Matrix(matrix.get_rows().iter()
+        .map(|v1| v1.iter().map(| u| *u*c).collect())
+        .collect())
+}
+
+pub fn normally_distributed() -> f64{
     let normal_distribution = Normal::new(0.0, 1.0);
-    return normal_distribution.sample(&mut rand::thread_rng()) as f32;
+    return normal_distribution.sample(&mut rand::thread_rng()) as f64;
 }
 
 //herutian product
 
 
-pub fn vec_sigmoid(v : &Vec<f32>) -> Vec<f32>{
+pub fn vec_sigmoid(v : &Vec<f64>) -> Vec<f64>{
     v.iter().map(| e |   sigmoid(*e)).collect()
 }
 
-pub fn vec_sigmoidprime(z: &Vec<f32>) -> Vec<f32> {
+pub fn vec_sigmoidprime(z: &Vec<f64>) -> Vec<f64> {
     z.iter().map(| e | sigmoid_prime(*e)).collect()
 }
 
-pub fn sigmoid(x : f32) -> f32{
+pub fn sigmoid(x : f64) -> f64{
     1.0/(1.0 + E.powf(-x))
 }
 
-fn sigmoid_prime(x : f32) -> f32 {
+fn sigmoid_prime(x : f64) -> f64 {
     sigmoid(x)*(1.0-sigmoid(x))
 }
 
@@ -84,7 +92,7 @@ mod tests {
         assert_eq!(0.09673856, sigmoid(-2.234));
         assert_eq!(0.99469614, sigmoid(5.234));
         assert_eq!(0.77451790 ,sigmoid(1.234));
-        let mut test: Vec<f32> =vec![-2.234,5.234,1.234];
+        let mut test: Vec<f64> =vec![-2.234,5.234,1.234];
         vec_sigmoid(&mut test);
         assert_eq!(vec![0.09673856, 0.99469614, 0.77451790], test);
     }
@@ -101,8 +109,63 @@ mod tests {
     }
 
     #[test]
-    fn nabla_weights() {
-        let delta:Vec<f32> = vec![ 4.18704095e-02,
+    fn nabla_bias_Test() {
+        let activation:Vec<f64> = vec![0.99788059,
+            0.5593983 ,
+            0.33911911,
+            0.10520647,
+            0.78713365,
+            0.88269034,
+            0.91647996,
+            0.0040027 ,
+            0.89062402,
+            0.07403182];
+        let mut y = vec![0.0;10];
+        y[1] = 1.0;
+        let sigmoid_prime = vec![0.00211492,
+            0.24647184,
+            0.22411734,
+            0.09413807,
+            0.16755426,
+            0.1035481 ,
+            0.07654444,
+            0.00398668,
+            0.09741288,
+            0.06855111];
+        let expected_delta:Vec<f64> = vec![2.11043720e-03,
+            -1.08595911e-01,
+             7.60024741e-02,
+             9.90393373e-03,
+             1.31887601e-01,
+             9.14009097e-02,
+             7.01514447e-02,
+             1.59574553e-05,
+             8.67582469e-02,
+             5.07496345e-03];
+
+        assert_eq!(expected_delta, nabla_bias(&activation, &sigmoid_prime ,&y));
+
+    }
+
+    #[test]
+    fn matrix_mul_test(){
+        let m = Matrix(vec![
+            vec![1.0, 1.5, 1.2],
+            vec![2.0, -3.0, 4.5],
+            vec![1.1, 1.2, -1.4]
+        ]);
+        let c = 10.0;
+        let expected = Matrix(vec![
+            vec![10.0, 15.0, 12.0],
+            vec![20.0, -30.0, 45.0],
+            vec![11.0, 12.0, -14.0]
+        ]);
+        assert_eq!(matrix_mul(&m, c).get_rows(), expected.get_rows());
+    }
+
+    #[test]
+    fn nabla_weights_test() {
+        let delta:Vec<f64> = vec![ 4.18704095e-02,
          5.57962314e-02,
          1.02673455e-01,
          6.52345275e-02,
@@ -112,11 +175,11 @@ mod tests {
         1.65037705e-03,
         5.46378319e-02,
         -5.80916191e-05];
-        let activation:Vec<f32> = vec![0.83689182, 0.71944723, 0.62745113, 0.00615586, 0.79145588, 0.99963068,
+        let activation:Vec<f64> = vec![0.83689182, 0.71944723, 0.62745113, 0.00615586, 0.79145588, 0.99963068,
         0.02803344, 0.9684408,  0.64020823, 0.19694865, 0.98593323, 0.89733453,
         0.98709725, 0.03776075, 0.40200459, 0.9515954 ];
 
-        let expected:Vec<Vec<f32>> = vec![vec![ 3.50410033e-02,  3.01235501e-02,  2.62716357e-02,  2.57748319e-04,
+        let expected:Vec<Vec<f64>> = vec![vec![ 3.50410033e-02,  3.01235501e-02,  2.62716357e-02,  2.57748319e-04,
         3.31385817e-02,  4.18549459e-02,  1.17377174e-03,  4.05490126e-02,
         2.68057808e-02,  8.24632073e-03,  4.12814280e-02,  3.75717643e-02,
         4.13301661e-02,  1.58105796e-03,  1.68320968e-02,  3.98436889e-02],
@@ -169,8 +232,8 @@ mod tests {
 
     #[test]
     fn sigmoid_prime_test(){
-        let expected: Vec<f32> = vec![0.08281957, 0.1586849, 0.03125247];
-        let to_be_calculated: Vec<f32> = vec![2.3, 1.4, -3.4];
+        let expected: Vec<f64> = vec![0.08281957, 0.1586849, 0.03125247];
+        let to_be_calculated: Vec<f64> = vec![2.3, 1.4, -3.4];
         assert_eq!(expected, vec_sigmoidprime(&to_be_calculated))
     }
 }
