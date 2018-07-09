@@ -9,9 +9,8 @@ pub fn nabla_bias(activation: &Vec<f64>, zprime: &Vec<f64>, expected_output: &Ve
     let cost: Vec<f64> = activation.iter()
         .zip(expected_output)
         .map(|(actual, expected)| (*actual-*expected)).collect();
-    //println!("activation: {:?}", activation);
-    //println!("cost: {:?}", cost);
-    zprime.iter().zip(cost).map(| (sigmoid_prime, cost) | sigmoid_prime*cost).collect()
+    let temp = zprime.iter().zip(cost).map(| (sigmoid_prime, cost) | sigmoid_prime*cost).collect();
+    return temp
 }
 
 pub fn nabla_weight(delta_vec: &Vec<f64>, activation_vec: &Vec<f64>) -> Matrix {
@@ -110,40 +109,16 @@ mod tests {
 
     #[test]
     fn nabla_bias_Test() {
-        let activation:Vec<f64> = vec![0.99788059,
-            0.5593983 ,
-            0.33911911,
-            0.10520647,
-            0.78713365,
-            0.88269034,
-            0.91647996,
-            0.0040027 ,
-            0.89062402,
-            0.07403182];
-        let mut y = vec![0.0;10];
-        y[1] = 1.0;
-        let sigmoid_prime = vec![0.00211492,
-            0.24647184,
-            0.22411734,
-            0.09413807,
-            0.16755426,
-            0.1035481 ,
-            0.07654444,
-            0.00398668,
-            0.09741288,
-            0.06855111];
-        let expected_delta:Vec<f64> = vec![2.11043720e-03,
-            -1.08595911e-01,
-             7.60024741e-02,
-             9.90393373e-03,
-             1.31887601e-01,
-             9.14009097e-02,
-             7.01514447e-02,
-             1.59574553e-05,
-             8.67582469e-02,
-             5.07496345e-03];
+        let activation =  vec![0.5816965, 0.02869444, 0.49710045];
 
-        assert_eq!(expected_delta, nabla_bias(&activation, &sigmoid_prime ,&y));
+        let sigprime = vec![0.24332568, 0.02787107, 0.24999159];
+
+
+        let y = vec![0.0, 1.0 , 0.0];
+
+        let expected_delta:Vec<f64> = vec![0.1415417, -0.02707132, 0.12427093];
+
+        assert_eq!(expected_delta, nabla_bias(&activation, &sigprime ,&y));
 
     }
 
@@ -232,9 +207,14 @@ mod tests {
 
     #[test]
     fn sigmoid_prime_test(){
-        let expected: Vec<f64> = vec![0.08281957, 0.1586849, 0.03125247];
-        let to_be_calculated: Vec<f64> = vec![2.3, 1.4, -3.4];
-        assert_eq!(expected, vec_sigmoidprime(&to_be_calculated))
+        let to_be_calc = vec![ 0.3297416 ,
+            -3.52193777,
+            -0.01159834];
+        let expected: Vec<f64> = vec![0.24332568,
+            0.02787107,
+            0.24999159];
+
+        assert_eq!(expected, vec_sigmoidprime(&to_be_calc))
     }
 }
 
