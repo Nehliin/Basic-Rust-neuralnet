@@ -36,9 +36,9 @@ impl Matrix {
 impl std::fmt::Display for Matrix {
 
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        let transpose = self.transpose();
+        //let transpose = self.transpose();
         let mut print = String::new();
-        for row in transpose.get_rows().iter() {
+        for row in self.get_rows().iter() {
             for element in row {
                 print.push_str(element.to_string().as_str());
                 print.push_str(", ");

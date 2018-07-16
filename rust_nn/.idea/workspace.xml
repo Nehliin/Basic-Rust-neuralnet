@@ -19,29 +19,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.rs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.rs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mod.rs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="mod.rs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/neural_net/math/mod.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="162" column="57" selection-start-line="162" selection-start-column="57" selection-end-line="162" selection-end-column="57" />
+<<<<<<< HEAD
+            <state relative-caret-position="90">
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+=======
+            <state relative-caret-position="-480">
+              <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+>>>>>>> 0e48a2e4474f065cf4ccb27357d923b63fb6f765
             </state>
           </provider>
         </entry>
@@ -49,24 +36,15 @@
       <file leaf-file-name="matrix.rs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/neural_net/math/matrix.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1620">
-              <caret line="110" column="29" lean-forward="true" selection-start-line="110" selection-start-column="29" selection-end-line="110" selection-end-column="29" />
+<<<<<<< HEAD
+            <state relative-caret-position="83">
+              <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+=======
+            <state relative-caret-position="-1862">
+              <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+>>>>>>> 0e48a2e4474f065cf4ccb27357d923b63fb6f765
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mod.rs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data_loader/mod.rs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="img.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/img.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="image.rs" pinned="false" current-in-tab="false">
@@ -74,10 +52,33 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-              <folding>
-                <element signature="e#326#327#0" expanded="true" />
-                <element signature="e#348#349#0" expanded="true" />
-              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mod.rs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data_loader/mod.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="960">
+              <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mod.rs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1391">
+              <caret line="194" column="40" selection-start-line="194" selection-start-column="40" selection-end-line="194" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.rs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -100,7 +101,7 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -109,6 +110,7 @@
         <option value="$PROJECT_DIR$/src/data_loader/image.rs" />
         <option value="$PROJECT_DIR$/src/neural_net/math/matrix.rs" />
         <option value="$PROJECT_DIR$/src/neural_net/math/mod.rs" />
+        <option value="$PROJECT_DIR$/src/main.rs" />
         <option value="$PROJECT_DIR$/src/neural_net/mod.rs" />
         <option value="$PROJECT_DIR$/src/main.rs" />
       </list>
@@ -123,10 +125,18 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="724" />
     <option name="height" value="709" />
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="2493" />
+    <option name="height" value="1415" />
+>>>>>>> 0e48a2e4474f065cf4ccb27357d923b63fb6f765
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -134,17 +144,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="rust_nn" type="b2602c69:ProjectViewProjectNode" />
               <item name="rust_nn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rust_nn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rust_nn" type="462c0819:PsiDirectoryNode" />
-              <item name="benches" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rust_nn" type="b2602c69:ProjectViewProjectNode" />
@@ -174,7 +180,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -208,9 +213,9 @@
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
     </configuration>
-    <configuration name="Test neural_net::math::tests::matrix_mul_test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+    <configuration name="Test neural_net::math::matrix::test::transpose" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
-      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::math::tests::matrix_mul_test -- --exact" />
+      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::math::matrix::test::transpose -- --exact" />
       <option name="nocapture" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -224,17 +229,17 @@
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
     </configuration>
-    <configuration name="Test neural_net::math::tests::nabla_weights" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+    <configuration name="Test neural_net::tests::propagate_backwards" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
-      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::math::tests::nabla_weights -- --exact" />
+      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::tests::propagate_backwards -- --exact" />
       <option name="nocapture" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
     </configuration>
-    <configuration name="Test neural_net::tests::propagate_backwards" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+    <configuration name="Test neural_net::tests::propagate_forward" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
-      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::tests::propagate_backwards -- --exact" />
+      <option name="command" value="test --package rust_nn --bin rust_nn neural_net::tests::propagate_forward -- --exact" />
       <option name="nocapture" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -282,19 +287,23 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="Cargo Command.Run rust_nn" />
-      <item itemvalue="Cargo Command.Test neural_net::math::tests::nabla_weights" />
       <item itemvalue="Cargo Command.Test neural_net::math::tests::nabla_bias_Test" />
-      <item itemvalue="Cargo Command.Test neural_net::math::tests::matrix_mul_test" />
       <item itemvalue="Cargo Command.Test neural_net::tests::propagate_backwards" />
+      <item itemvalue="Cargo Command.Test neural_net::tests::propagate_forward" />
+      <item itemvalue="Cargo Command.Test neural_net::math::matrix::test::transpose" />
+      <item itemvalue="Cargo Command.Run rust_nn" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Cargo Command.Run rust_nn" />
         <item itemvalue="Cargo Command.Test neural_net::tests::propagate_backwards" />
+<<<<<<< HEAD
         <item itemvalue="Cargo Command.Test neural_net::math::tests::matrix_mul_test" />
+=======
+        <item itemvalue="Cargo Command.Test neural_net::math::matrix::test::transpose" />
+        <item itemvalue="Cargo Command.Test neural_net::tests::propagate_forward" />
+>>>>>>> 0e48a2e4474f065cf4ccb27357d923b63fb6f765
         <item itemvalue="Cargo Command.Test neural_net::math::tests::nabla_bias_Test" />
-        <item itemvalue="Cargo Command.Test neural_net::math::tests::nabla_weights" />
       </list>
     </recent_temporary>
   </component>
@@ -310,10 +319,13 @@
       <updated>1530728930000</updated>
       <workItem from="1530728932130" duration="3696000" />
       <workItem from="1530772706794" duration="8000" />
+      <workItem from="1531061804042" duration="7457000" />
+      <workItem from="1531161260839" duration="6190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="20659000" />
   </component>
   <component name="ToolWindowManager">
@@ -327,42 +339,78 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.328877" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49979943" weight="0.5307087" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.328877" />
+=======
+    <option name="totallyTimeSpent" value="33033000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="25" width="2493" height="1415" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.162856" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Cargo" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.45210728" />
+>>>>>>> 0e48a2e4474f065cf4ccb27357d923b63fb6f765
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39973262" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Application Servers" order="7" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5852156" />
-      <window_info anchor="bottom" id="Application Servers" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="Cargo" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="right" id="Google Cloud Storage" order="3" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16302083" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="CMake" order="7" sideWeight="0.49939832" weight="0.3464567" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="CMake" order="7" sideWeight="0.49939832" weight="0.3464567" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Application Servers" order="7" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Image Layers" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42145595" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Cargo" order="4" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="right" id="Google Cloud Storage" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info id="UI Designer" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.162856" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="CMake" order="12" sideWeight="0.49939832" weight="0.3464567" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Capture Analysis" order="10" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -370,14 +418,13 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs" />
     <entry file="file://$PROJECT_DIR$/Cargo.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -473,13 +520,7 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/image_loader.rs" />
-    <entry file="file://$USER_HOME$/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/libstd/sys_common/backtrace.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/libstd/sys_common/backtrace.rs" />
     <entry file="file://$PROJECT_DIR$/img.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -487,10 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-          <folding>
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#348#349#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -515,19 +552,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="40" column="8" lean-forward="true" selection-end-line="206" />
-          <folding>
-            <element signature="e#1987#1988#0" expanded="true" />
-            <element signature="e#2038#2039#0" expanded="true" />
-            <element signature="e#2178#2179#0" expanded="true" />
-            <element signature="e#2225#2226#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/neural_net/math.rs" />
     <entry file="file://$PROJECT_DIR$/src/neural_net/math/matrix.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="897">
@@ -602,31 +627,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-          <folding>
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#348#349#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data_loader/mod.rs">
+<<<<<<< HEAD
+=======
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+        <state relative-caret-position="960">
+          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/neural_net/math/matrix.rs">
+    <entry file="file://$PROJECT_DIR$/src/main.rs">
+>>>>>>> 0e48a2e4474f065cf4ccb27357d923b63fb6f765
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="110" column="29" lean-forward="true" selection-start-line="110" selection-start-column="29" selection-end-line="110" selection-end-column="29" />
+        <state relative-caret-position="90">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/neural_net/math/mod.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="162" column="57" selection-start-line="162" selection-start-column="57" selection-end-line="162" selection-end-column="57" />
+        <state relative-caret-position="-480">
+          <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/neural_net/math/matrix.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1862">
+          <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -639,8 +670,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/neural_net/mod.rs">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="83">
           <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+=======
+        <state relative-caret-position="1391">
+          <caret line="194" column="40" selection-start-line="194" selection-start-column="40" selection-end-line="194" selection-end-column="40" />
+>>>>>>> 0e48a2e4474f065cf4ccb27357d923b63fb6f765
         </state>
       </provider>
     </entry>
