@@ -1,0 +1,13 @@
+/Users/oskarnehlin/Desktop/Rust/Webserver/target/debug/deps/libnet2-d62439dd478621cb.rlib: /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/lib.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/tcp.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/udp.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/socket.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/ext.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/utils.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/sys/unix/mod.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/sys/unix/impls.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/unix.rs
+
+/Users/oskarnehlin/Desktop/Rust/Webserver/target/debug/deps/net2-d62439dd478621cb.d: /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/lib.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/tcp.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/udp.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/socket.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/ext.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/utils.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/sys/unix/mod.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/sys/unix/impls.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/unix.rs
+
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/lib.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/tcp.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/udp.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/socket.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/ext.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/utils.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/sys/unix/mod.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/sys/unix/impls.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/net2-0.2.33/src/unix.rs:

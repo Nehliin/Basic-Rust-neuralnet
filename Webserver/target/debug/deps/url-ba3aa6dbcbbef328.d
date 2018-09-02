@@ -1,0 +1,13 @@
+/Users/oskarnehlin/Desktop/Rust/Webserver/target/debug/deps/liburl-ba3aa6dbcbbef328.rlib: /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/lib.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/encoding.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/host.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/origin.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/path_segments.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/parser.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/slicing.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/form_urlencoded.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/quirks.rs
+
+/Users/oskarnehlin/Desktop/Rust/Webserver/target/debug/deps/url-ba3aa6dbcbbef328.d: /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/lib.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/encoding.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/host.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/origin.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/path_segments.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/parser.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/slicing.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/form_urlencoded.rs /Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/quirks.rs
+
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/lib.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/encoding.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/host.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/origin.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/path_segments.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/parser.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/slicing.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/form_urlencoded.rs:
+/Users/oskarnehlin/.cargo/registry/src/github.com-1ecc6299db9ec823/url-1.7.1/src/quirks.rs:
