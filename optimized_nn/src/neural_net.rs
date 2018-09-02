@@ -7,9 +7,9 @@ use self::rand::{thread_rng, Rng};
 
 #[derive(Debug)]
 pub struct NeuralNet {
-   pub weight_matrixes: Vec<Array2<f64>>,
-   pub biases: Vec<Array2<f64>>,
-   pub structure: Vec<usize>
+    pub weight_matrixes: Vec<Array2<f64>>,
+    pub biases: Vec<Array2<f64>>,
+    pub structure: Vec<usize>
 }
 
 impl NeuralNet {
@@ -49,7 +49,7 @@ impl NeuralNet {
         result
     }
 
-    fn backprop(&self, input: Array2<f64>, expected_output: Array2<f64>) -> (Vec<Array2<f64>>, Vec<Array2<f64>>){
+    fn backprop(&self, input: &Array2<f64>, expected_output: &Array2<f64>) -> (Vec<Array2<f64>>, Vec<Array2<f64>>){
         let mut nabla_b = Vec::with_capacity(self.biases.len());
         let mut nabla_w = Vec::with_capacity(self.weight_matrixes.len());
 
@@ -61,7 +61,7 @@ impl NeuralNet {
             nabla_w.push(Array2::zeros(weight.raw_dim()));
         }
 
-        let mut activation = input;
+        let mut activation = input.clone();
         let mut activations = Vec::with_capacity(self.structure.len());
 
         activations.push(activation.clone());
@@ -97,59 +97,42 @@ impl NeuralNet {
         (nabla_b, nabla_w)
     }
 
-    /*
-    def update_mini_batch(self, mini_batch, eta):
-        """Update the network's weights and biases by applying
-        gradient descent using backpropagation to a single mini batch.
-        The ``mini_batch`` is a list of tuples ``(x, y)``, and ``eta``
-        is the learning rate."""
-        nabla_b = [np.zeros(b.shape) for b in self.biases]
-        nabla_w = [np.zeros(w.shape) for w in self.weights]
-        for x, y in mini_batch:
-            delta_nabla_b, delta_nabla_w = self.backprop(x, y)
-            nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
-            nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
-        self.weights = [w-(eta/len(mini_batch))*nw
-                        for w, nw in zip(self.weights, nabla_w)]
-        self.biases = [b-(eta/len(mini_batch))*nb
-                       for b, nb in zip(self.biases, nabla_b)]*/
 
-    fn update_mini_batch(&mut self, mini_batch:Vec<(Array2<f64>, Array2<f64>)>, eta: f64) {
+    fn update_mini_batch(&mut self, mini_batch:&[(Array2<f64>, Array2<f64>)], eta: f64) {
         let mut nabla_b = Vec::with_capacity(self.biases.len());
         let mut nabla_w = Vec::with_capacity(self.weight_matrixes.len());
 
-        for w in self.weight_matrixes.iter() {
+        for w in &self.weight_matrixes {
             nabla_w.push(Array::zeros(w.raw_dim()));
         }
-        for b in self.biases.iter() {
+        for b in &self.biases {
             nabla_b.push(Array::zeros(b.raw_dim()));
         }
-        for (x,y) in mini_batch.iter() {
-            let (delta_nabla_b, delta_nabla_w) = self.backprop(x.clone(), y.clone());
+        for (x,y) in mini_batch {
+
+            let (delta_nabla_b, delta_nabla_w) = self.backprop(x, y);
             for (w, dw) in nabla_w.iter_mut().zip(&delta_nabla_w) {
-                *w = w.clone() + (dw.clone());
+                *w = &w.view() + dw;
             }
             for (b, db) in nabla_b.iter_mut().zip(&delta_nabla_b) {
-                *b = b.clone() + (db.clone());
+                *b = &b.view() + db;
             }
         }
-
+        let minibatch_len = mini_batch.len() as f64;
         for (w, dw) in self.weight_matrixes.iter_mut().zip(&nabla_w) {
-            *w = w.clone() - (dw.clone())*(eta/mini_batch.len() as f64) ;
+            //let te:&Array2<f64> = &(dw * 1.9);
+            *w = &w.view() - &(dw * (eta/minibatch_len));
         }
         for (b, db) in self.biases.iter_mut().zip(&nabla_b) {
-            *b = b.clone() - (db.clone())*(eta/mini_batch.len() as f64);
+            *b = &b.view() - &(db * (eta/minibatch_len));
         }
 
 
     }
     /*pub fn gradient_decent(&mut self,training_data:Vec<(Array2<f64>, Array2<f64>)> ) {
         let mut itera:f64 = 0.0;
-
         println!("Started");
         for   (img, expected) in  training_data { // avrage backprop diffs
-
-
             if itera % 2000.0 == 0.0 {
                 println!("traning: {}% complete", (itera  / 60000.0)*100.0)
             }
@@ -164,41 +147,41 @@ impl NeuralNet {
         }
         println!("traning: 100% complete");
     }*/
-   /* if test_data: n_test = len(test_data)
-    n = len(training_data)
-    for j in xrange(epochs):
-    random.shuffle(training_data)
-    mini_batches = [
-    training_data[k:k+mini_batch_size]
-    for k in xrange(0, n, mini_batch_size)]
-    for mini_batch in mini_batches:
-    self.update_mini_batch(mini_batch, eta)
-    if test_data:
-    print "Epoch {0}: {1} / {2}".format(
-    j, self.evaluate(test_data), n_test)
-    else:
-    print "Epoch {0} complete".format(j)*/
-    pub fn sdg(&mut self, training_data:&mut Vec<(Array2<f64>, Array2<f64>)>, eta:f64, batch_size:usize) {
-        let n = training_data.len();
-        thread_rng().shuffle(training_data);
-        let mut mini_batches = Vec::with_capacity(batch_size);
-        for batch in training_data.chunks(batch_size) {
-            mini_batches.push(batch.to_vec());
+    /* if test_data: n_test = len(test_data)
+     n = len(training_data)
+     for j in xrange(epochs):
+     random.shuffle(training_data)
+     mini_batches = [
+     training_data[k:k+mini_batch_size]
+     for k in xrange(0, n, mini_batch_size)]
+     for mini_batch in mini_batches:
+     self.update_mini_batch(mini_batch, eta)
+     if test_data:
+     print "Epoch {0}: {1} / {2}".format(
+     j, self.evaluate(test_data), n_test)
+     else:
+     print "Epoch {0} complete".format(j)*/
+    pub fn sdg(&mut self, training_data:&mut [(Array2<f64>, Array2<f64>)], epochs:usize, eta:f64, batch_size:usize, test_data:&[(Array2<f64>, Array2<f64>)]) {
+        for i in 0..epochs {
+            thread_rng().shuffle(training_data);
+            let mut mini_batches = Vec::with_capacity(batch_size);
+            for batch in training_data.chunks(batch_size) {
+                mini_batches.push(batch.to_vec());
+            }
+            for batch in mini_batches {
+                self.update_mini_batch(&batch, eta);
+            }
+            println!("Epoch: {}", i);
+            self.eval(test_data);
         }
-        //let mut i = 0.0;
-        let len = mini_batches.len() as f32;
-        for batch in mini_batches {
-            self.update_mini_batch(batch, eta);
-           // i += 1.0;
-           // println!("{}% progress", (i / len)*100.0)
-        }
+
 
     }
 
-    pub fn eval(&self, test_data: &Vec<(Array2<f64>, Array2<f64>)>) {
+    pub fn eval(&self, test_data: &[(Array2<f64>, Array2<f64>)]) {
         let mut correct = 0.0;
         let data_len = test_data.len() as f64;
-        for (img, answer) in test_data.iter() {
+        for (img, answer) in test_data {
             let calculated = self.feedforward(&img);
             if vec_max(&calculated) == vec_max(&answer) {
                 correct += 1.0;
@@ -224,7 +207,7 @@ fn vec_max(v :&Array2<f64>) -> usize {
 fn vec_sigmoid(v : &Array2<f64>) -> Array2<f64>{
     let mut result = v.clone();
     for e in result.iter_mut() {
-        *e = sigmoid(e);
+        *e = sigmoid(*e);
     }
     result
 }
@@ -232,27 +215,24 @@ fn vec_sigmoid(v : &Array2<f64>) -> Array2<f64>{
 fn vec_sigmoid_prime(v : &Array2<f64>) -> Array2<f64> {
     let mut result = v.clone();
     for e in result.iter_mut() {
-        *e = sigmoid_prime(e);
+        *e = sigmoid_prime(*e);
     }
     result
 }
 
 
-fn sigmoid(x : &f64) -> f64{
-    1.0/(1.0 + E.powf(-*x))
+fn sigmoid(x : f64) -> f64{
+    1.0/(1.0 + E.powf(-x))
 }
 
-fn sigmoid_prime(x :&f64) -> f64{
+fn sigmoid_prime(x :f64) -> f64{
     sigmoid(x)*(1.0-sigmoid(x))
 }
-
 
 #[cfg(test)]
 mod tests {
 
     use super::*;
-
-    // testa att transpose och dot fungerar som du förväntar dig
 
 
     #[test]
@@ -263,7 +243,7 @@ mod tests {
         let mut weight_matrixes = Vec::with_capacity(3);
         let mut biases = Vec::with_capacity(2);
         weight_matrixes.push(arr2(&[[2., 2., 2.],
-                                            [2., 2., 2.]]));
+            [2., 2., 2.]]));
         weight_matrixes.push(arr2(&[[2., 2.]]));
         biases.push(arr2(&[[1.], [1.]]));
         biases.push(arr2(&[[1.]]));
@@ -281,4 +261,8 @@ mod tests {
         let a = arr2(&[[1.0], [2.2], [0.3], [2.4]]);
         assert_eq!(3, vec_max(&a));
     }
+
+
 }
+
+
