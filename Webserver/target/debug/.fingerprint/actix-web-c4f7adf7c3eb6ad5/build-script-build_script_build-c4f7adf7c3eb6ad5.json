@@ -1,1 +1,0 @@
-{"rustc":5362242119021711120,"features":"[\"brotli\", \"brotli2\", \"cookie\", \"default\", \"flate2\", \"flate2-c\", \"session\"]","target":13123923088509177768,"profile":7282077418741342047,"path":2297318622622072715,"deps":[["version_check v0.1.4","version_check",7214520194277442202]],"local":[{"Precalculated":"0.7.4"}],"rustflags":[],"edition":"Edition2015"}

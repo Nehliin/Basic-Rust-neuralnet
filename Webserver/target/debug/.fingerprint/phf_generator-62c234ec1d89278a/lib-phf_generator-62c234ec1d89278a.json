@@ -1,1 +1,0 @@
-{"rustc":5362242119021711120,"features":"[]","target":4974097169364030611,"profile":7282077418741342047,"path":2038644952896095795,"deps":[["phf_shared v0.7.22","phf_shared",15681237963295514640],["rand v0.4.3","rand",9592631129668450576]],"local":[{"Precalculated":"0.7.22"}],"rustflags":[],"edition":"Edition2015"}

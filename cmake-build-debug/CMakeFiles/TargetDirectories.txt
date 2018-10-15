@@ -1,3 +1,0 @@
-/home/oskar/Desktop/Rust/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/oskar/Desktop/Rust/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/oskar/Desktop/Rust/cmake-build-debug/CMakeFiles/Rust.dir
